@@ -1,4 +1,4 @@
-
+Here is a query to find the top 5 customers in the top 10 cities who have paid the highest total amounts to Rockbuster:
 
 SELECT count(a.customer_id),
        a.first_name,
