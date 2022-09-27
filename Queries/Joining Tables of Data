@@ -1,0 +1,28 @@
+
+
+SELECT count(a.customer_id),
+       a.first_name,
+       a.last_name,
+       c.city,
+       d.country,
+       sum(e.amount) AS payment
+FROM customer a
+INNER JOIN address b ON a.address_id = b.address_id
+INNER JOIN city c ON b.city_id = c.city_id
+INNER JOIN country d ON c.country_id = d.country_id
+INNER JOIN payment e ON a.customer_id = e.customer_id
+WHERE city in ('Aurora',
+               'Shimoga',
+               'Aparecida de Goinia',
+               'Emeishan',
+               'Pontianak',
+               'Tarsus',
+               'Atlixco',
+               'Zalantun',
+               'Rio Claro',
+               'Tokat')
+GROUP BY a.customer_id,
+         d.country,
+         c.city
+ORDER BY payment DESC
+LIMIT 5
